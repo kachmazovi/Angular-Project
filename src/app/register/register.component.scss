@@ -1,0 +1,11 @@
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: space-around;
+    flex-wrap: wrap;
+}
+
+input {
+    margin-bottom: 10px;
+}

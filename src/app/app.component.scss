@@ -1,0 +1,26 @@
+.form {
+    width: 300px;
+    border: 1px solid black;
+    margin: 0 auto;
+    margin-top: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.h200px {
+    height: 200px;
+}
+
+.bg-light {
+    background-color: lightblue;
+}
+
+.bg-dark {
+    background-color: lemonchiffon;
+}
+
+.h400px {
+    height: 400px;
+}

@@ -1,2 +1,13 @@
-<app-header></app-header>
-<app-test-view></app-test-view>
+<!-- <div class="form" [ngClass]="{ 'h200px bg-light': loginPage, 'h400px bg-dark': registerPage }">
+    <app-login *ngIf="loginPage" #loginComponent [placeHodlers]="placeHodlers"></app-login>
+    <app-register *ngIf="registerPage"></app-register>
+
+    <button (click)="login()">Login</button>
+    <button (click)="register()">Register</button>
+</div> -->
+
+<app-test-view [(inChild)]="communicateWithChild"></app-test-view>
+
+<button (click)="changeFromParent()">change from parent </button>
+
+<p> {{ communicateWithChild }} </p>
