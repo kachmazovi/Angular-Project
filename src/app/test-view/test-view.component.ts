@@ -1,15 +1,32 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
 
 @Component({
   selector: 'app-test-view',
   templateUrl: './test-view.component.html',
-  styleUrls: ['./test-view.component.scss']
+  styleUrls: ['./test-view.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TestViewComponent {
+export class TestViewComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked {
   @Input() inChild!: string
+  @Input() newName!: string
   @Output() inChildChange = new EventEmitter()
 
-  public name: string;
+  public color: string = 'red';
+
+  public isSpecial = true;
+  public canSave = true;
+  public isUnchanged = true;
+
+  public myFirstInput: string = ''
+
+  public ngSwitchProperty: number = 0;
+
+  public currentStyles = {
+    'font-style': this.canSave ? 'italic' : 'normal',
+    'font-weight': !this.isUnchanged ? 'bold' : 'normal',
+    'font-size': this.isSpecial ? '24px' : '12px',
+  };
+  public name?: string;
   public myArr = [
     {
       country: 'USA',
@@ -55,10 +72,36 @@ export class TestViewComponent {
 
   private nameChanged: boolean = false;
 
-  constructor() {
-    this.name = 'TestViewComponent';
-    console.log('TestViewComponent created');
+  ngOnChanges(changes: SimpleChanges) {
+    console.log('changes:', changes)
   }
+
+  ngOnInit(): void {
+    this.ngSwitchProperty = Math.random() * 10;
+    // console.log('TestViewComponent initialized');
+    // this.name = 'TestViewComponent';
+
+
+    // setTimeout(() => {
+    //   this.name = 'TestViewComponent changed by timer';
+    //   console.log(this.name)
+    // }, 3000);
+  }
+
+  ngDoCheck(): void {
+    console.log('called ngDoCheck')
+    // this.changeDetect.detectChanges()
+  }
+
+  ngAfterContentInit(): void {
+    console.log('called ngAfterContentInit')
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('called ngAfterContentChecked')
+  }
+
+  constructor(private changeDetect: ChangeDetectorRef) { }
 
   public changeName(): void {
     this.nameChanged = !this.nameChanged
@@ -70,4 +113,16 @@ export class TestViewComponent {
     this.inChildChange.emit(this.inChild)
   }
 
+  public changeCurrentStyles(): void {
+    this.currentStyles = {
+      'font-style': this.canSave ? 'italic' : 'normal',
+      'font-weight': !this.isUnchanged ? 'bold' : 'normal',
+      'font-size': this.isSpecial ? '24px' : '12px',
+    }
+  }
+
+  public getRandomNumber(): void {
+    this.ngSwitchProperty = Math.floor(Math.random() * 10);
+    console.log(this.ngSwitchProperty)
+  }
 }

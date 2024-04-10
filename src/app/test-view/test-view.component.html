@@ -12,4 +12,39 @@
 
 <button (click)="changeFromChild()"> change from child </button>
 
-<p> {{inChild}} </p>
+<p appChangeColor> {{inChild}} </p>
+
+<p [ngClass]="{'special bg-color-blue': isSpecial}"> ngClass directive </p>
+<button (click)="isSpecial = !isSpecial; changeCurrentStyles()">change class</button>
+<br><br><br>
+<p appChangeColor [ngStyle]="currentStyles"> ngStyle directive </p>
+<button (click)="canSave = !canSave; changeCurrentStyles();">change class</button>
+
+
+<input [(ngModel)]="myFirstInput">
+<label> {{myFirstInput}} </label>
+
+
+<br><br><br>
+
+<div [ngSwitch]="ngSwitchProperty">
+    <h1 *ngSwitchCase="1">one</h1>
+    <h1 *ngSwitchCase="2">two</h1>
+    <h1 *ngSwitchCase="3">three</h1>
+    <h1 *ngSwitchCase="4">four</h1>
+    <h1 *ngSwitchDefault="">default</h1>
+</div>
+
+<button (click)="getRandomNumber()">change ng switch</button>
+
+<br><br><br>
+
+<h1 appChangeColor> This is custom directive </h1>
+
+<div>
+    <input type="radio" name="colors" (click)="color='lightgreen'">Green
+    <input type="radio" name="colors" (click)="color='yellow'">Yellow
+    <input type="radio" name="colors" (click)="color='cyan'">Cyan
+</div>
+
+<p appChangeColor [color]="color">Highlight me!</p>

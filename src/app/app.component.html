@@ -6,8 +6,10 @@
     <button (click)="register()">Register</button>
 </div> -->
 
-<app-test-view [(inChild)]="communicateWithChild"></app-test-view>
 
 <button (click)="changeFromParent()">change from parent </button>
 
 <p> {{ communicateWithChild }} </p>
+
+<br><br><br>
+<app-test-view [(inChild)]="communicateWithChild" [newName]="'new name'"></app-test-view>

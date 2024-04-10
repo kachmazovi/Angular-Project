@@ -7,18 +7,21 @@ import { TestViewComponent } from './test-view/test-view.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-
+import { FormsModule } from '@angular/forms';
+import { ChangeColorDirective } from './change-color.directive';
 @NgModule({
   declarations: [
     AppComponent,
     TestViewComponent,
     HeaderComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ChangeColorDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

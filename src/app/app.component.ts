@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,14 @@ export class AppComponent {
     username: 'Username',
     password: 'Password'
   }
+
+  // ngOnInit(): void {
+  //   console.log('oninit: ', this.loginComp);
+  // }
+
+  // ngAfterViewInit(): void {
+  //   console.log('avfetviewinit: ', this.loginComp);
+  // }
 
   public login() {
     if (!this.loginPage) {
