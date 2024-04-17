@@ -1,10 +1,9 @@
-<!-- <div class="form" [ngClass]="{ 'h200px bg-light': loginPage, 'h400px bg-dark': registerPage }">
-    <app-login *ngIf="loginPage" #loginComponent [placeHodlers]="placeHodlers"></app-login>
-    <app-register *ngIf="registerPage"></app-register>
+<div class="form" [ngClass]="{ 'h200px bg-light': loginPage, 'h400px bg-dark': registerPage }">
+    <app-login *ngIf="loginPage" #loginComponent (registerEvent)="register()" [placeHodlers]="placeHodlers"></app-login>
+    <app-register *ngIf="registerPage" (loginEvent)="login()" ></app-register>
 
-    <button (click)="login()">Login</button>
-    <button (click)="register()">Register</button>
-</div> -->
+    
+</div>
 
 
 <button (click)="changeFromParent()">change from parent </button>

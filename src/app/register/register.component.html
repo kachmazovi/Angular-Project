@@ -1,16 +1,17 @@
 <div class="form">
-    <form>
-        <label>First name:</label>
-        <input type="text">
-        <label>Last name:</label>
-        <input type="text">
-        <label>Username:</label>
-        <input type="text">
-        <label>Password:</label>
-        <input type="text">
-        <label>Confrirm password:</label>
-        <input type="text">
-        <label>Email:</label>
-        <input type="text">
-    </form>
+    <label>First name:</label>
+    <input [(ngModel)]="firstName" type="text">
+    <label>Last name:</label>
+    <input [(ngModel)]="lastName" type="text">
+    <label>Username:</label>
+    <input [(ngModel)]="userName" type="text">
+    <label >Password:</label>
+    <input [(ngModel)]="password" type="text">
+    <label>Confrirm password:</label>
+    <input type="text">
+    <label>Email:</label>
+    <input [(ngModel)]="email" type="text">
 </div>
+<button (click)="register()">Register</button>
+<button (click)="login()">Login</button>
+

@@ -1,15 +1,18 @@
 import { Component, DoCheck, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ChangeDetectionStrategy, ChangeDetectorRef, AfterViewChecked, AfterContentInit, AfterContentChecked } from '@angular/core';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-test-view',
   templateUrl: './test-view.component.html',
   styleUrls: ['./test-view.component.scss'],
-  // changeDetection: ChangeDetectionStrategy.OnPush
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TestViewComponent implements OnChanges, OnInit, DoCheck, AfterContentInit, AfterContentChecked {
   @Input() inChild!: string
   @Input() newName!: string
   @Output() inChildChange = new EventEmitter()
+
+  public dateNow: Date = new Date();
 
   public color: string = 'red';
 
@@ -26,7 +29,9 @@ export class TestViewComponent implements OnChanges, OnInit, DoCheck, AfterConte
     'font-weight': !this.isUnchanged ? 'bold' : 'normal',
     'font-size': this.isSpecial ? '24px' : '12px',
   };
-  public name?: string;
+  public name: string = 'TestViewComponent';
+  public amount: number = 100;
+  public numArr: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   public myArr = [
     {
       country: 'USA',
@@ -73,13 +78,12 @@ export class TestViewComponent implements OnChanges, OnInit, DoCheck, AfterConte
   private nameChanged: boolean = false;
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log('changes:', changes)
+    // console.log('changes:', changes)
   }
 
   ngOnInit(): void {
     this.ngSwitchProperty = Math.random() * 10;
     // console.log('TestViewComponent initialized');
-    // this.name = 'TestViewComponent';
 
 
     // setTimeout(() => {
@@ -89,19 +93,21 @@ export class TestViewComponent implements OnChanges, OnInit, DoCheck, AfterConte
   }
 
   ngDoCheck(): void {
-    console.log('called ngDoCheck')
+    // console.log('called ngDoCheck')
     // this.changeDetect.detectChanges()
   }
 
   ngAfterContentInit(): void {
-    console.log('called ngAfterContentInit')
+    // console.log('called ngAfterContentInit')
   }
 
   ngAfterContentChecked(): void {
-    console.log('called ngAfterContentChecked')
+    // console.log('called ngAfterContentChecked')
   }
 
-  constructor(private changeDetect: ChangeDetectorRef) { }
+  constructor(private changeDetect: ChangeDetectorRef) { 
+    
+  }
 
   public changeName(): void {
     this.nameChanged = !this.nameChanged

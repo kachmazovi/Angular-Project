@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   @ViewChild('loginComponent') loginComp: any;
@@ -19,6 +20,10 @@ export class AppComponent {
     username: 'Username',
     password: 'Password'
   }
+
+  // constructor (private loginServ: LoginService) {
+  //   this.loginServ.logMessage('Hello from parent');
+  // }
 
   // ngOnInit(): void {
   //   console.log('oninit: ', this.loginComp);

@@ -9,6 +9,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { FormsModule } from '@angular/forms';
 import { ChangeColorDirective } from './change-color.directive';
+import { CustomPipe } from './pipes/custom.pipe';
+import { LoginService } from './services/login.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,7 +18,8 @@ import { ChangeColorDirective } from './change-color.directive';
     HeaderComponent,
     RegisterComponent,
     LoginComponent,
-    ChangeColorDirective
+    ChangeColorDirective,
+    CustomPipe
   ],
   imports: [
     BrowserModule,
