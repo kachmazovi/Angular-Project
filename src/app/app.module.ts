@@ -7,7 +7,7 @@ import { TestViewComponent } from './test-view/test-view.component';
 import { HeaderComponent } from './header/header.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChangeColorDirective } from './change-color.directive';
 import { CustomPipe } from './pipes/custom.pipe';
 import { LoginService } from './services/login.service';
@@ -24,7 +24,8 @@ import { LoginService } from './services/login.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

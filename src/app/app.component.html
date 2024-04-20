@@ -1,14 +1,12 @@
 <div class="form" [ngClass]="{ 'h200px bg-light': loginPage, 'h400px bg-dark': registerPage }">
     <app-login *ngIf="loginPage" #loginComponent (registerEvent)="register()" [placeHodlers]="placeHodlers"></app-login>
     <app-register *ngIf="registerPage" (loginEvent)="login()" ></app-register>
-
-    
 </div>
 
-
+<!-- 
 <button (click)="changeFromParent()">change from parent </button>
 
 <p> {{ communicateWithChild }} </p>
 
 <br><br><br>
-<app-test-view [(inChild)]="communicateWithChild" [newName]="'new name'"></app-test-view>
+<app-test-view [(inChild)]="communicateWithChild" [newName]="'new name'"></app-test-view> -->
