@@ -24,11 +24,13 @@
         <label>Username:</label>
         <input formControlName="userName" type="text">
         <span class="error-message" ></span>
-        <label>Password:</label>
-        <input formControlName="password" type="password">
-        <span class="error-message" ></span>
-        <label>Confrirm password:</label>
-        <input type="password">
+        <form formGroupName="passwordGroup" >
+            <label>Password:</label>
+            <input formControlName="password" type="password">
+            <label>Confrirm password:</label>
+            <input formControlName="confirmPassword" type="password">
+            <span *ngIf="userForm.get('passwordGroup')?.errors?.['mismatch']" class="error-message" >პაროლები არ ემთხვევა</span>
+        </form>
         <label>Email:</label>
         <input formControlName="email" type="text">
         <span *ngIf="emailCtrl?.touched && emailCtrl?.errors?.['required']" class="error-message" >ამ ველის შევსება აუცილებელია</span>

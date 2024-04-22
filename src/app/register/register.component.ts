@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { RegisterService } from '../services/register.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserData } from '../services/register.interface';
-import { adult } from '../validatos/custom-validators';
+import { adult, matchValidator } from '../validatos/custom-validators';
 
 @Component({
   selector: 'app-register',
@@ -29,7 +29,18 @@ export class RegisterComponent implements OnInit {
     firstName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     lastName: new FormControl('', [Validators.required, Validators.maxLength(20)]),
     userName: new FormControl('', [Validators.required, Validators.minLength(6), Validators.maxLength(20)]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    passwordGroup: new FormGroup(
+      {
+        password: new FormControl<string>('', [
+          Validators.required,
+          Validators.pattern(
+            '^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[^ws]).{8,}$'
+          ),
+        ]),
+        confirmPassword: new FormControl<string>('', [Validators.required]),
+      },
+      [matchValidator('password', 'confirmPassword')]
+    ),
     email: new FormControl('', [Validators.required, Validators.email]),
     age: new FormControl('', [Validators.required, adult]),
     adress: new FormGroup({
@@ -56,11 +67,7 @@ export class RegisterComponent implements OnInit {
     console.log(this.userForm)
     console.log(this.userForm.get('userName'))
     this.userForm.valueChanges.subscribe(value => {
-      console.log(this.ageCtrl)
-    })
-
-    this.userForm.get('password')?.valueChanges.subscribe(v => {
-      
+      console.log(this.userForm)
     })
   }
 
