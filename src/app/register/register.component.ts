@@ -3,6 +3,8 @@ import { RegisterService } from '../services/register.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { IUserData } from '../services/register.interface';
 import { adult, matchValidator } from '../validatos/custom-validators';
+import { LoginService } from '../services/login.service';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-register',
@@ -61,7 +63,7 @@ export class RegisterComponent implements OnInit {
   //   })
   // })
 
-  constructor(private registerServ: RegisterService, private formBuilder: FormBuilder) { }
+  constructor(private registerServ: RegisterService, private formBuilder: FormBuilder, private loginService: LoginService) { }
 
   ngOnInit(): void {
     console.log(this.userForm)
@@ -69,6 +71,12 @@ export class RegisterComponent implements OnInit {
     this.userForm.valueChanges.subscribe(value => {
       console.log(this.userForm)
     })
+
+    this.loginService.userLoginSbj.pipe(
+      tap((value) => {
+        console.log(value)
+      })
+    ).subscribe()
   }
 
   public register() {

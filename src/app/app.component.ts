@@ -21,9 +21,9 @@ export class AppComponent {
     password: 'Password'
   }
 
-  // constructor (private loginServ: LoginService) {
-  //   this.loginServ.logMessage('Hello from parent');
-  // }
+
+  constructor(public loginServ: LoginService) {
+  }
 
   // ngOnInit(): void {
   //   console.log('oninit: ', this.loginComp);

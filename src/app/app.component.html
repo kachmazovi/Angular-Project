@@ -1,8 +1,10 @@
 <div class="form" [ngClass]="{ 'h200px bg-light': loginPage, 'h400px bg-dark': registerPage }">
     <app-login *ngIf="loginPage" #loginComponent (registerEvent)="register()" [placeHodlers]="placeHodlers"></app-login>
-    <app-register *ngIf="registerPage" (loginEvent)="login()" ></app-register>
+    <app-register *ngIf="registerPage" (loginEvent)="login()"></app-register>
 </div>
 
+
+<input [formControl]="loginServ.userInput" type="text">
 <!-- 
 <button (click)="changeFromParent()">change from parent </button>
 
@@ -10,3 +12,9 @@
 
 <br><br><br>
 <app-test-view [(inChild)]="communicateWithChild" [newName]="'new name'"></app-test-view> -->
+
+
+<div *ngIf="loginServ.userLoginSbj | async as userInfo">
+    <h1> {{ userInfo.username }} </h1>
+    <h2> {{ userInfo.password }} </h2>
+</div>
